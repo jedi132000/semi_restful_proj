@@ -1,0 +1,8 @@
+<h1>Edit Show {{show.id}} </h1>
+<form action="{%  url 'shows:update' show.id%}" method="POST">
+    {% csrf_token %}
+    <p>title: <input type="text" name="title" value="{{show.title}}"></p>
+    <p>network: <input type="text" name="network" value="{{show.network}}"></p>
+    <p>release_date: <input type="date" name="release_date" value="{{show.release_date}}"></p>
+    <input type="submit" value="update">
+</form>

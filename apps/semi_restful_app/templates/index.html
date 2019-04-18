@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                    {{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        <h1>Semi_Restful_app</h1>
+        <h2>Add a new show</h2>
+        <form action="{% url 'shows:create' %}" method="POST">
+            {%csrf_token%}
+            <p><input type="text" name="title" placeholder="Walking Dead"></p>
+            <p><input type="text" name="network" placeholder="NBC"></p>
+            <p><input type="date" name="release_date"></p>
+            <p><textarea name="description" id="" cols="30" rows="10" placeholder="Show description goes here"></textarea></p>
+            <input type="submit" value="create">
+        </form>
+    </body>
+</html>
